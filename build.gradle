@@ -1,0 +1,58 @@
+plugins {
+    id 'java'
+    id 'io.quarkus' version '3.24.5'
+}
+
+repositories {
+    mavenCentral()
+    maven {
+        url "https://repo1.maven.org/maven2/"
+    }
+}
+
+dependencies {
+    implementation enforcedPlatform('io.quarkus.platform:quarkus-bom:3.24.5')
+    implementation 'io.quarkus:quarkus-arc'
+    implementation 'io.quarkus:quarkus-rest'
+    implementation 'io.quarkus:quarkus-rest-jackson'
+    
+    // Cardano dependencies
+    implementation 'com.bloxbean.cardano:cardano-client-lib:0.6.6'
+    implementation 'com.bloxbean.cardano:yaci:0.3.7'
+    implementation 'com.bloxbean.cardano:yaci-helper:0.3.7'
+    
+    // Elasticsearch
+    implementation 'co.elastic.clients:elasticsearch-java:8.11.0'
+    implementation 'org.elasticsearch.client:elasticsearch-rest-client:8.11.0'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.15.2'
+    
+    // Logging
+    implementation 'io.quarkus:quarkus-logging-json'
+    
+    testImplementation 'io.quarkus:quarkus-junit5'
+    testImplementation 'io.rest-assured:rest-assured'
+}
+
+group 'com.cardano.indexer'
+version '1.0-SNAPSHOT'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_24
+    targetCompatibility = JavaVersion.VERSION_24
+}
+
+compileJava {
+    options.release = 24
+}
+
+test {
+    systemProperty "java.util.logging.manager", "org.jboss.logmanager.LogManager"
+}
+compileJava {
+    options.encoding = 'UTF-8'
+    options.compilerArgs << '-parameters'
+}
+
+compileTestJava {
+    options.encoding = 'UTF-8'
+}

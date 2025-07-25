@@ -1,0 +1,5 @@
+*
+!build/quarkus-app/lib/
+!build/quarkus-app/*.jar
+!build/quarkus-app/app/
+!build/quarkus-app/quarkus/

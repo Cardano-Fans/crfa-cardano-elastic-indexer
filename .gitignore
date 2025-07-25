@@ -1,0 +1,32 @@
+# Gradle
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+
+# IDE
+.idea/
+*.iws
+*.iml
+*.ipr
+.vscode/
+
+# Java
+*.class
+*.jar
+*.war
+*.ear
+*.logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Quarkus
+*-runner
+*-runner.jar
+.java-version
+.sdkmanrc
+
+# Docker
+.docker/
