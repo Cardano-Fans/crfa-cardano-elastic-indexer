@@ -1,6 +1,5 @@
 package com.cardano.indexer;
 
-import com.bloxbean.cardano.yaci.core.config.YaciConfig;
 import com.cardano.indexer.service.CardanoNodeService;
 import io.quarkus.logging.Log;
 import io.quarkus.runtime.Quarkus;
@@ -18,8 +17,6 @@ public class CardanoIndexerApplication implements QuarkusApplication {
     public int run(String... args) throws Exception {
         Log.info("Starting Cardano Elasticsearch Indexer");
 
-        YaciConfig.INSTANCE.setReturnTxBodyCbor(true);
-        
         // Add shutdown hook to gracefully stop the node service
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             Log.info("Shutdown signal received, stopping services...");
